@@ -1,0 +1,28 @@
+{% extends 'aire_libre/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <h1> Aire Libre Dashboard </h1>
+
+    <form hx-get="{% url 'index' %}" hx-target="#heatmap" hx-trigger="change" class="flex flex-row gap-4 mb-4 form-control w-full max-w-xs" hx-indicator="#loading">
+        <label class="form-control w-full max-w-xs">
+            <div class="label">
+                <span class="label-text">{{ form.source.label }}</span>
+            </div>
+            {% render_field form.source class+="select select-bordered" %}
+        </label>
+        <label class="form-control w-full max-w-xs">
+            <div class="label">
+                <span class="label-text">{{ form.period.label }}</span>
+            </div>
+            {% render_field form.period class+="select select-bordered" %}
+        </label>
+    </form>
+    <span id="loading" class="htmx-indicator loading loading-bars loading-lg"></span>
+    <div id="heatmap" hx-indicator="#loading">
+        {% include "aire_libre/partials/chart.html" %}
+    </div>
+
+
+{% endblock content %}
