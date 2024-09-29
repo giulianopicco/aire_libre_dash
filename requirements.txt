@@ -2,12 +2,15 @@ asgiref==3.8.1
 certifi==2024.8.30
 cfgv==3.4.0
 charset-normalizer==3.3.2
+click==8.1.7
 distlib==0.3.8
 Django==5.1.1
 django-htmx==1.19.0
 django-widget-tweaks==1.5.0
 djhtml==3.0.6
 filelock==3.16.1
+gunicorn==23.0.0
+h11==0.14.0
 identify==2.6.1
 idna==3.10
 nodeenv==1.9.1
@@ -26,4 +29,5 @@ sqlparse==0.5.1
 tenacity==9.0.0
 tzdata==2024.2
 urllib3==2.2.3
+uvicorn==0.31.0
 virtualenv==20.26.6
