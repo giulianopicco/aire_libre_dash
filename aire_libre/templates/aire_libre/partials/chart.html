@@ -1,1 +1,40 @@
-{{ fig|safe }}
+{{ fig_heatmap|safe }}
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full py-4">
+
+  <div class="stat place-items-center">
+    <div class="stat-title text-primary">PM2.5</div>
+    <div class="stat-value text-primary">Avg: {{ stats.pm2dot5.average | floatformat:2 }}</div>
+    <div class="stat-desc text-primary">
+      <div class="flex items-center flex-row gap-1 justify-center">
+        <div>Min: {{ stats.pm2dot5.minimum | floatformat:2 }}</div>
+        -
+        <div>Max: {{ stats.pm2dot5.maximum | floatformat:2 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title text-secondary">PM10</div>
+    <div class="stat-value text-secondary">Avg: {{ stats.pm10.average | floatformat:2 }}</div>
+    <div class="stat-desc text-secondary">
+      <div class="flex items-center flex-row gap-1 justify-center">
+        <div>Min: {{ stats.pm10.minimum | floatformat:2 }}</div>
+        -
+        <div>Max: {{ stats.pm10.maximum | floatformat:2 }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat place-items-center">
+    <div class="stat-title text-accent">PM0.1</div>
+    <div class="stat-value text-accent">Avg: {{ stats.pm1dot0.average | floatformat:2 }}</div>
+    <div class="stat-desc text-accent">
+      <div class="flex items-center flex-row gap-1 justify-center">
+        <div>Min: {{ stats.pm1dot0.minimum | floatformat:2 }}</div>
+        -
+        <div>Max: {{ stats.pm1dot0.maximum | floatformat:2 }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ fig_line|safe }}

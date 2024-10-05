@@ -5,7 +5,7 @@ periods = [(1, "Day"), (7, "Week"), (30, "Month")]
 
 
 class MesurementsForm(forms.Form):
-    period = forms.ChoiceField(choices=periods)
+    period = forms.ChoiceField(choices=periods, initial=7)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -13,4 +13,6 @@ class MesurementsForm(forms.Form):
         data = response.json()
         choices = [(choice['source'], choice['description'])
                    for choice in data]
-        self.fields['source'] = forms.ChoiceField(choices=choices)
+        choices.insert(0, ('', '----'))
+        self.fields['source'] = forms.ChoiceField(
+            choices=choices)

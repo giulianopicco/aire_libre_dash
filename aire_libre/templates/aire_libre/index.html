@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <h1> Aire Libre Dashboard </h1>
+    <h1 class="text-3xl font-bold mb-4"> Aire Libre Dashboard </h1>
 
     <form hx-get="{% url 'index' %}" hx-target="#heatmap" hx-trigger="change" class="flex flex-row gap-4 mb-4 form-control w-full max-w-xs" hx-indicator="#loading">
         <label class="form-control w-full max-w-xs">
@@ -21,8 +21,24 @@
     </form>
     <span id="loading" class="htmx-indicator loading loading-bars loading-lg"></span>
     <div id="heatmap" hx-indicator="#loading">
-        {% include "aire_libre/partials/chart.html" %}
+        {% if fig %}
+            {% include "aire_libre/partials/chart.html" %}
+        {% else %}
+            <div role="alert" class="alert">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    class="stroke-info h-6 w-6 shrink-0">
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Select a source.</span>
+            </div>
+        {% endif %}
     </div>
-
 
 {% endblock content %}
