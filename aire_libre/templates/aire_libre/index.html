@@ -21,7 +21,7 @@
     </form>
     <span id="loading" class="htmx-indicator loading loading-bars loading-lg"></span>
     <div id="heatmap" hx-indicator="#loading">
-        {% if fig %}
+        {% if fig_heatmap %}
             {% include "aire_libre/partials/chart.html" %}
         {% else %}
             <div role="alert" class="alert">

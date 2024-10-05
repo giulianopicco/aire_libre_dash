@@ -1,3 +1,4 @@
+import json
 from django import forms
 import requests
 
@@ -10,7 +11,11 @@ class MesurementsForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         response = requests.get('https://rald-dev.greenbeep.com/api/v1/aqi')
-        data = response.json()
+        try:
+            data = response.json()
+        except json.JSONDECODEError as e:
+            print(e)
+            data = []
         choices = [(choice['source'], choice['description'])
                    for choice in data]
         choices.insert(0, ('', '----'))
