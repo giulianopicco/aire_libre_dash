@@ -62,7 +62,6 @@ def fetch(endpoint, source, days):
 
     url = f"{endpoint}?{urlencode(query)}"
     response = requests.get(url)
-    print(url)
     return response.json()
 
 

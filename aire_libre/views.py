@@ -30,9 +30,9 @@ def index(request):
     df = df.sort_values(by='recorded', ascending=True)
 
     fig_heatmap = charting.get_heatmap_chart(df, period,
-                                             f"AQI by hour from {next((y for x, y in form.fields['source'].choices if x == source), None)} in the last {period} days")
+                                             f"Índice de Calidad del Aire (AQI) por hora en {next((y for x, y in form.fields['source'].choices if x == source), None)} en los últimos {period} días")
     fig_line = charting.get_line_chart(df,
-                                       f"Number of PM2.5, PM10 and PM10.1 measured from {next((y for x, y in form.fields['source'].choices if x == source), None)} in the last {period} days")
+                                       f"Cantidad de PM2.5, PM10 y PM10.1 medidas en {next((y for x, y in form.fields['source'].choices if x == source), None)} en los últimos {period} días")
 
     pm_values = charting.get_stats_data(source, period)
 

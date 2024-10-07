@@ -56,12 +56,15 @@ def get_heatmap_chart(data, period, title):
         ],
         zmin=0,
         zmax=400,
-        hovertemplate='<b>Date: %{y}</b><br><b>Hour: %{x}</b><br><b>Aqi: %{z}</b>',
+        hovertemplate='<b>Fecha: %{y}</b><br><b>Hora: %{x}</b><br><b>Aqi: %{z}</b>',
         name="",
         colorbar=dict(thickness=25,
+                      title=dict(
+                          text="Escala AQI",
+                      ),
                       tickvals=[25, 75, 125, 175, 250, 350],
-                      ticktext=['Good', 'Moderate', 'Unhealthy for Sensitive Groups',
-                                'Unhealthy', 'Very Unhealthy', 'Hazardous'],)
+                      ticktext=['Bueno', 'Moderado', 'Peligroso para grupos sensibles',
+                                'Insalubre', 'Muy insalubre', 'Peligroso'],)
     ))
 
     hours = [f'{i:02d}' for i in range(24)]
@@ -84,10 +87,9 @@ def get_heatmap_chart(data, period, title):
         plot_bgcolor='rgba(0,0,0,0)',
         height=300 + 40 * period,
         title=title,
-        xaxis_title="Hour",
-        yaxis_title="Date",
-        legend_title="AQI Scale",
-        template="plotly_dark",
+        xaxis_title="Hora",
+        yaxis_title="Fecha",
+        template="plotly_dark"
     )
 
     return fig
